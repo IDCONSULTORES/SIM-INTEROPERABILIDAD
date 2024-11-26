@@ -1,0 +1,74 @@
+<main class="is-vertical">
+  <div class="header-section white-cnt">
+    <div class="header-section__info">
+      <h1 class="header-section__info__title mb-0">Mi Perfil</h1>
+      <h2 class="header-section__info__subtitle mb-0">
+        Administra y visualiza los datos e información de tu cuenta
+      </h2>
+    </div>
+  </div>
+  <div class="mt-4 white-cnt py-3 px-4">
+    <h3 class="title is-4 has-text-weight-bold">Información General</h3>
+    <div class="columns m-0 p-0">
+      <div class="column is-4">
+        <div class="is-flex is-justify-content-center is-align-items-center">
+          <profile-icon *ngIf="!url"></profile-icon>
+          <img height="300px" width="300px" *ngIf="url" [src]="url">
+        </div>
+      </div>
+      <div class="column is-8">
+        <div
+          class="is-flex is-flex-direction-column is-justify-content-space-between"
+          style="height: 100%"
+        >
+          <p class="is-size-4 mb-3">
+            <span class="has-text-weight-bold">Nombre Completo: </span>{{name}}
+          </p>
+          <p class="is-size-4 mb-3">
+            <span class="has-text-weight-bold">DNI o RUC: </span>{{dni}}
+          </p>
+          <p class="is-size-4 mb-3">
+            <span class="has-text-weight-bold">País: </span> Perú
+          </p>
+          <p class="is-size-4">
+            <span class="has-text-weight-bold">Región: </span> {{region}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-4 white-cnt py-3 px-4">
+    <h3 class="title is-4 has-text-weight-bold">Información General</h3>
+
+    <div class="column is-8">
+      <div
+        class="is-flex is-flex-direction-column is-justify-content-space-between"
+        style="height: 100%; gap: 1.5rem"
+      >
+        <p class="is-size-4 mb-3">
+          <span class="has-text-weight-bold">Correo: </span
+          >{{email}}
+        </p>
+        <p class="is-size-4 mb-3">
+          <span class="has-text-weight-bold">Teléfono: </span> {{telefono}}
+        </p>
+        <div
+          class="is-flex is-justify-content-space-between is-flex-wrap-wrap is-align-items-flex-end"
+          style="width: fit-content; gap: 2rem"
+        >
+          <p class="is-size-4 mb-0">
+            <span class="has-text-weight-bold">Contraseña: </span>
+            ***********
+          </p>
+          <div
+            class="link-password is-size-4"
+            aria-label="Cambiar contraseña"
+            (click)="changePasswordModal()"
+          >
+            Cambiar contraseña
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

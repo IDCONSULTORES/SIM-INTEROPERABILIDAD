@@ -1,0 +1,109 @@
+<div class="header">
+  <h2 class="header__title" mat-dialog-title tabindex="0">Atributos - ANP de Administración Nacional</h2>
+  <mat-icon mat-dialog-close class="close-icon" type="button">close</mat-icon>
+</div>
+<mat-dialog-content>
+  <div class="white-cnt table-bg">
+    <div class="table-cnt">
+      <table class="general-table" mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="campo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Campos <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.id }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="accion">
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                <!---->  
+
+                <div class="indicator-cnt">
+                  <span
+                    class="indicator-cnt__ball"
+                    [ngClass]="{
+                      'indicator-cnt__ball--derivada': element.state === 0,
+                      'indicator-cnt__ball--observada': element.state === 1
+                        }"
+                  ></span>
+                </div>
+
+
+                <!---->
+
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="clave_primaria">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Claves Primaria <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                <div class="field">
+                  <div class="control">
+                    <input type="text" [value]="element.clave_primaria">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="disclaimer1">
+          <td mat-footer-cell *matFooterCellDef colspan="2">
+            <h1>FECHA DE ACTUALIZACION : </h1>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="disclaimer2">
+          <td mat-footer-cell *matFooterCellDef colspan="1">
+
+            <div class="select_div">
+              <div class="left">
+                <select id="sele" >
+                  <option value="" selected>Seleccionar...</option>
+                  <option *ngFor="let user of dataTest" [value]="user.id">
+                    {{ user.id }}
+                  </option>
+                </select>
+              </div>
+              <div class="right">
+                <div class="is-flex is-action">
+                  <check-icon class="icon" 
+                  (click)="patch_layers()"
+                  ></check-icon>
+
+                </div>
+               
+              </div>
+
+    
+            </div>
+
+
+
+
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" ></tr>
+        <tr mat-row *matRowDef="let element; columns: displayedColumns; let i = index"></tr>
+        <tr mat-footer-row *matFooterRowDef="['disclaimer1','disclaimer2']; sticky: true" class="example-second-footer-row"></tr>
+      </table>
+
+      
+    </div>
+  </div>
+</mat-dialog-content>

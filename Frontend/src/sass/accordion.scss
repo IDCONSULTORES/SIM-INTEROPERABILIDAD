@@ -1,0 +1,59 @@
+.general-acordion {
+  background-color: transparent;
+  margin-top: 1rem;
+
+  //mat-expansion-panel-header,
+  .mat-expansion-panel {
+    box-shadow: none !important;
+    background: transparent !important;
+    :not(:last-child) {
+      margin-bottom: 1rem;
+    }
+
+    .mat-content {
+      margin-bottom: 0;
+    }
+  }
+
+  /*   .mat-expansion-panel-spacing {
+    margin: 0;
+  } */
+
+  .mat-expansion-panel-header.mat-expanded {
+    margin-bottom: 0 !important;
+  }
+
+  mat-expansion-panel-header:hover {
+    background-color: var(--primary-color) !important;
+    color: var(--white);
+    opacity: 0.8;
+  }
+
+  .mat-expansion-panel-header {
+    height: 3.5rem;
+    //border-bottom: 1px solid #3a8f32;
+    border-radius: 0.875rem;
+    padding: 0.5rem 1.75rem;
+    background-color: var(--primary-color);
+
+    .mat-expansion-panel-header-title {
+      color: var(--white);
+      font-size: 1.5rem;
+      justify-content: center;
+      line-height: 2rem;
+    }
+
+    .mat-expansion-indicator::after {
+      color: var(--white) !important;
+    }
+  }
+
+  .mat-expansion-panel-header.mat-expanded,
+  .mat-expansion-panel-header.mat-expanded:focus {
+    height: 3.5rem;
+    background-color: var(--primary-color) !important;
+  }
+  .mat-expansion-panel-body {
+    padding: 0;
+  }
+}

@@ -1,0 +1,38 @@
+version: "3"
+services:
+  sql-server:
+    build:
+      context: .
+      dockerfile: ./compose/sql/Dockerfile
+    image: sql-server
+    container_name: sql-server
+    restart: always
+    environment:
+      SA_PASSWORD: 1Secure*Password1
+      ACCEPT_EULA: Y
+      #MSSQL_PID: Express
+    ports:
+      - 14330:1433
+    volumes:
+      - sql-data:/var/opt/mssql
+    networks:
+      - sim_network
+  sim-flask-new:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: sim-flask-new
+    container_name: sim-flask-new
+    volumes:
+      - .:/app:z
+    ports:
+      - "8500:8080"
+    networks:
+      - sim_network
+  
+volumes:
+  sql-data:
+
+networks:
+  sim_network:
+    external: true

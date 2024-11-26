@@ -1,0 +1,102 @@
+.table-cnt {
+  max-height: 400px;
+
+  .general-table .mat-row .mat-cell {
+    text-align: center;
+  }
+
+  .general-table .mat-row .is-action {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .general-table .indicator-cnt {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 0.75rem;
+    &__text {
+      font-size: 1rem;
+      padding: 0;
+      margin: 0;
+    }
+  
+    &__ball {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: white;
+      &--derivada {
+        background-color: #e2e2e2;
+      }
+      &--observada {
+        background-color: #063468;
+      }
+    }
+  }
+  
+
+  .general-table .example-second-footer-row td {
+    background: #e6bdbd;
+    font-weight: bold;
+    color: #900000;
+    .select_div {    
+      margin-top: 10px;
+      display: flex;
+      font-family: sans-serif;
+      width: 100%;
+      .left {
+       // font-size: 19px;
+       width: 50%;
+      }
+      .right {
+       // font-weight: bold;
+       font-size: 15px;
+       margin-left: 10px;
+      } 
+    }
+
+    h1{
+      margin-bottom: -6px;
+    }
+    select{
+      margin-bottom: -6px;
+    }
+    
+  }
+
+  .field {
+    flex: 1;
+    margin-bottom: 0.5rem;
+    .control {
+      .select {
+        width: 100%;
+      }
+    }
+    select {
+      height: fit-content;
+      width: 100%;
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+      border-radius: 0.875rem;
+      background: var(--input-bg);
+    }
+    input {
+      height: fit-content;
+      width: 50%;
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+      border-radius: 0.875rem;
+      background: var(--input-bg);
+    }
+    .select,
+    select {
+      height: 1.75rem;
+    }
+
+    select {
+      padding: 0.25rem 1rem;
+    }
+  }
+}

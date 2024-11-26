@@ -1,0 +1,130 @@
+$mainColor: #0174ab;
+main {
+  padding: 1rem;
+  padding-bottom: 0px;
+  height: 95%;
+  width: 100%;
+  background-color: #f1f0f0;
+  overflow-y: auto;
+
+  .main__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cuerpo {
+    padding: 1rem;
+    margin-top: 0.5rem;
+    width: 100%;
+    height: calc(100% - 120px);
+    background-color: white;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    overflow-y: auto;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .fields-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .field {
+      flex-grow: 2;
+      .label {
+        font-weight: 400;
+        font-size: 1rem;
+        color: $mainColor;
+        margin-bottom: 0px;
+      }
+      .control {
+        .select {
+          width: 100%;
+        }
+        .select select,
+        input {
+          border-color: $mainColor;
+          border-radius: 4px;
+        }
+      }
+      select,
+      input {
+        width: 100%;
+      }
+    }
+  }
+
+  .options {
+    padding: 1rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    button {
+      min-width: 140px;
+    }
+  }
+
+  label {
+    color: $mainColor;
+  }
+
+  .c_input {
+    width: 100%;
+    height: 2.1rem;
+    border: 1.5px solid $mainColor;
+    border-radius: 5px;
+  }
+
+  .select {
+    width: 100%;
+    max-width: none;
+    border-radius: 5px;
+    .c_select {
+      width: 100%;
+      border-radius: 5px;
+    }
+  }
+  .buscador {
+    height: 2.1rem;
+    border: 1.5px solid $mainColor;
+  }
+  .table-container {
+    padding: 0.25rem;
+    padding-top: 0;
+    // height: calc(100% - 350px);
+    height: 98%;
+    // overflow: auto;
+    .table-bg {
+      padding: 0.25rem 0.25rem 0.25rem;
+      background-color: white;
+
+      table {
+        width: 100%;
+        .mat-header-row {
+          background-color: white;
+          border-radius: 6px 6px 0 0;
+          .mat-header-cell {
+            font-size: 1rem;
+            background-color: white;
+            color: $mainColor;
+            min-width: 150px;
+            padding: 0.75rem 8px;
+          }
+        }
+      }
+    }
+  }
+
+  .reset-field {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}

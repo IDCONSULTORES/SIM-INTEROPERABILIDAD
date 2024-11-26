@@ -1,0 +1,89 @@
+<div class="header">
+  
+  <h2 class="header__title" mat-dialog-title>
+    {{ isEditMode ? "Editar Programación" : "Programar" }}
+  </h2>
+  <mat-icon mat-dialog-close class="close-icon" type="button">close</mat-icon>
+</div>
+<app-skeleton-loading *ngIf="loadingData"></app-skeleton-loading>
+<mat-dialog-content>
+  <form class="form" [formGroup]="serviceForm" (ngSubmit)="onSubmit()">
+    <div class="fields-group">
+      <div class="field">
+        <div class="control">
+          <input formControlName="name" type="text" placeholder="Nombre de la capa" />
+        </div>
+      </div>
+    </div>
+    <div class="fields-group">
+      <div class="field">
+        <div class="control">
+          <input formControlName="url" type="text" placeholder="Destino" />
+        </div>
+      </div>
+    </div>
+    <div class="fields-group">
+      <div class="field">
+        <div class="control">
+          <div class="select">
+            <select id="version">
+              <option value="">Versión</option>
+              <option >1.0.0</option>
+              <option >1.1.0</option>
+              <option >2.0.0</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <div class="select">
+            <select formControlName="service" id="servicio">
+              <option value="">Servicio</option>
+              <option >WFS</option>
+              <option >RASTER</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fields-group">
+      <div class="field">
+        <div class="control">
+          <input id="sistema_referencia" type="text" placeholder="Sistema de referencia" />
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <input id="institucion" formControlName="institution" type="text" placeholder="Institucion" />
+        </div>
+      </div>
+    </div>
+    <div class="fields-group">
+      <!-- <div class="field">
+        <div class="control">
+          <input id="periodicidad" type="text" placeholder="Periodicidad" />
+        </div>
+      </div> -->
+      <div class="field">
+        <div class="control">
+          <button
+            class="is-primary-button availability"
+            type="button"
+            (click)="openAvailability()"
+          >
+            Disponibilidad
+          </button>
+        </div>
+      </div>
+
+    </div>
+    <div class="buttons">
+      <!-- <button class="is-primary-button" type="button" mat-dialog-close>
+        Cancelar
+      </button> -->
+      <button *ngIf="this.data.isEditMode == false" class="is-primary-button" type="submit">Guardar</button>
+      <button *ngIf="this.data.isEditMode == true"class="is-primary-button" type="submit">Actualizar</button>
+    </div>
+  </form>
+</mat-dialog-content>

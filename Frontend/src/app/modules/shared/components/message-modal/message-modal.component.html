@@ -1,0 +1,42 @@
+<div class="header">
+  <mat-icon
+    mat-dialog-close
+    class="close-icon"
+    type="button"
+    *ngIf="data.hasCloseButton"
+    >close</mat-icon
+  >
+</div>
+<mat-dialog-content>
+  <div class="modal-cnt">
+    <img
+      [src]="data.imagePath"
+      [alt]="data.imageAlt"
+      *ngIf="data.imagePath"
+      class="logo mb-4"
+    />
+    <h3 class="title mb-0" *ngIf="data.title">{{ data.title }}</h3>
+    <p class="mb-0 mt-4" *ngIf="data.subtitle">{{ data.subtitle }}</p>
+    <div
+      class="buttons mt-4"
+      *ngIf="data.primaryButtonText || data.secondaryButtonText"
+    >
+      <button
+        type="button"
+        class="is-primary-button"
+        *ngIf="data.primaryButtonText"
+        (click)="actions()"
+      >
+        {{ data.primaryButtonText }}
+      </button>
+      <button
+        type="button"
+        class="is-primary-button"
+        *ngIf="data.secondaryButtonText"
+        (click)="secondaryAction()"
+      >
+        {{ data.secondaryButtonText }}
+      </button>
+    </div>
+  </div>
+</mat-dialog-content>

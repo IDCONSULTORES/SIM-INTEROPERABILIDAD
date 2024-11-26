@@ -1,0 +1,70 @@
+<div class="header">
+  <h2 class="header__title" mat-dialog-title tabindex="0">Programar Tarea</h2>
+  <mat-icon mat-dialog-close class="close-icon" type="button">close</mat-icon>
+</div>
+<mat-dialog-content>
+  <div class="white-cnt table-bg">
+    <div class="table-cnt">
+      <table class="general-table" mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="campo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Campos <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.projectNameTreatment }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="accion">
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                <div class="is-flex is-action">
+                  <check-icon class="icon"></check-icon>
+                  <delete-icon class="icon"></delete-icon>
+                </div>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="clave_primaria">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Claves Primaria <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                <div class="field">
+                  <div class="control">
+                    <div class="select">
+                      <select>
+                        <option value="">Frecuencia</option>
+                        <option value="1">Select dropdown</option>
+                        <option value="2">With options</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns; sticky: true"
+        ></tr>
+        <tr
+          mat-row
+          *matRowDef="let element; columns: displayedColumns; let i = index"
+        ></tr>
+      </table>
+    </div>
+  </div>
+</mat-dialog-content>

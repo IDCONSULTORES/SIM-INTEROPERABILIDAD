@@ -1,0 +1,366 @@
+@import "./vars.scss";
+@import "./utilities.scss";
+@import "./table.scss";
+@import "./accordion.scss";
+@import "./modal.scss";
+
+/*
+* This will be general modifiers for buttons
+*/
+@mixin main-button {
+  font-size: 1.25rem;
+  padding: 0.5rem 1.5rem;
+  border-color: transparent;
+  border-radius: 3.125rem;
+  color: white;
+  font-weight: 400;
+}
+
+.button-primary {
+  @include main-button;
+  color: var(--text-color-primary);
+  background-color: var(--primary-color);
+  &--active {
+    background-color: var(--primary-color);
+  }
+}
+
+.button-primary:hover {
+  opacity: 0.75;
+}
+
+.secondary-button {
+  @include main-button;
+  color: var(--primary-color);
+  background-color: var(--ternary-color);
+  &--active {
+    color: white;
+    background-color: var(--primary-color);
+  }
+}
+
+.secondary-button:hover {
+  color: inherit;
+}
+
+.is-primary-button {
+  background-color: var(--primary-color);
+  @include main-button;
+}
+
+.is-secondary-button {
+  background-color: var(--primary-color);
+  @include main-button;
+}
+
+.is-primary-button:hover {
+  opacity: 0.75;
+}
+.is-primary-button:disabled {
+  background-color: gray;
+}
+
+.is-secondary-button:hover {
+  opacity: 0.75;
+}
+.is-secondary-button:disabled {
+  background-color: gray;
+}
+
+.is-secondary-button,
+.is-primary-button {
+  &--is-small {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+  }
+}
+
+.is-clear-button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.component-container {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  border-radius: 10px;
+  padding: 0.5rem;
+  background-color: white;
+}
+
+.sidebar-cnt {
+  .mat-expansion-panel-content {
+    gap: 8px;
+    .mat-expansion-panel-body {
+      padding: 8px 0 8px 1rem;
+      color: white;
+      border-top: 1px solid white;
+    }
+  }
+}
+
+.mat-expansion-indicator::after {
+  color: white !important;
+}
+
+.dialog-no-padding {
+  max-width: 90vw !important;
+  .mat-dialog-container {
+    padding: 0px;
+  }
+  .mat-dialog-content {
+    padding: 0px;
+    margin: 0;
+  }
+}
+
+// Icons
+
+.regular-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.mid-icon {
+  width: 35px;
+  height: 35px;
+}
+
+.big-icon {
+  width: 50px;
+  height: 50px;
+}
+
+.selector-icon {
+  width: 200px;
+  height: 200px;
+}
+
+// General Filters Modifiers
+
+.general-filter--no-title {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+label {
+  font-size: 1rem;
+}
+
+.general-filter {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  &__title {
+    font-size: 1.5rem !important;
+    line-height: 110%;
+    font-weight: normal !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+.general-filter-inputs {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.general-filter-inputs--green {
+  .field {
+    margin-bottom: 0 !important;
+    label {
+      color: var(--primary-color);
+    }
+    p {
+      margin-bottom: 0;
+    }
+    input,
+    select {
+      border-color: var(--primary-color);
+      border-width: 1.5px;
+    }
+  }
+}
+
+.general-filter-inputs--blue {
+  .field {
+    margin-bottom: 0 !important;
+    label {
+      color: var(--primary-color);
+    }
+    p {
+      margin-bottom: 0;
+    }
+    input,
+    select {
+      border-color: var(--primary-color);
+      border-width: 1.5px;
+    }
+  }
+}
+
+// Buttons
+
+.buttons-container {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.add-button-primary {
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  padding: 0px 4px 4px;
+  font-size: 22px;
+  line-height: 100%;
+}
+
+.add-button-secondary {
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  padding: 0px 4px 4px;
+  font-size: 22px;
+  line-height: 100%;
+}
+
+.table-expandable {
+  .expandable-row {
+    height: 0;
+    background-color: #f8f8f8;
+    .mat-cell {
+      padding: 0 10px;
+    }
+  }
+
+  .expanded-row td {
+    border-bottom-width: 0;
+  }
+}
+
+.admin-acordion {
+  .mat-expansion-indicator::after {
+    color: #3a8f32 !important;
+  }
+  .mat-content {
+    flex: none;
+  }
+  .mat-expansion-panel-header-title {
+    font-size: 1rem;
+  }
+  .mat-expansion-panel-header {
+    height: 2.5rem;
+    border-bottom: 1px solid #3a8f32;
+    border-radius: 0px;
+    padding: 0 4px;
+  }
+
+  .mat-expansion-panel-header.mat-expanded {
+    height: 3rem;
+  }
+  .mat-expansion-panel-body {
+    padding: 0;
+  }
+}
+
+.admin-acordion-child {
+  .mat-expansion-indicator::after {
+    color: #3a8f32 !important;
+  }
+  .mat-content {
+    flex: none;
+  }
+  .mat-expansion-panel-header-title {
+    font-size: 1rem;
+  }
+  .mat-expansion-panel-header {
+    height: 2.5rem;
+    border-radius: 0px;
+    padding: 0 4px;
+  }
+
+  .mat-expansion-panel-header.mat-expanded {
+    height: 3rem;
+  }
+  .mat-expansion-panel-body {
+    padding: 0;
+  }
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 20px;
+  border: 3px solid var(--primary-color);
+}
+
+.indicator-cnt-notification {
+  display: flex;
+  width: 100%;
+  gap: 0.75rem;
+  &__text {
+    font-size: 1rem;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__ball {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+    &--red {
+      background-color: #d63419;
+    }
+    &--yellow {
+      background-color: #d6c800;
+    }
+    &--green-l {
+      background-color: #38e26f;
+    }
+    &--green {
+      background-color: #18b048;
+    }
+    &--green-s {
+      background-color: #077929;
+    }
+  }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.has-shadow-background {
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}

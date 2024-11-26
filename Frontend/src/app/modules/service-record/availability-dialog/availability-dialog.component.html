@@ -1,0 +1,117 @@
+<div class="header">
+    <h2 class="header__title" mat-dialog-title>
+        Programar disponibilidad
+    </h2>
+    <mat-icon mat-dialog-close class="close-icon" type="button">close</mat-icon>
+  </div>
+  <mat-dialog-content>
+    <table class="table table-field">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Día</th>
+          <th>Hora de Inicio</th>
+          <th>Hora de Fin</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th class="add-icon">
+            <button
+              mat-mini-fab
+              type="button"
+              aria-label="Agregar"
+              (click)="addNewElementToList()"
+            >
+              <mat-icon>add</mat-icon>
+            </button>
+          </th>
+          <th></th>
+        </tr>
+      </tfoot>
+      <tbody>
+        <tr *ngFor="let item of dataTable">
+          <th>*</th>
+          <td class="table-input">
+            <div class="field">
+              <div class="control">
+                <div class="select">
+                  <select id="dia" [(ngModel)]="item.day">
+                    <option value="Monday">Lunes</option>
+                    <option value="Tuesday">Martes</option>
+                    <option value="Wednesday">Miércoles</option>
+                    <option value="Thursday">Jueves</option>
+                    <option value="Friday">Viernes</option>
+                    <option value="Saturday">Sábado</option>
+                    <option value="Sunday">Domingo</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="table-input">
+            <div class="field" style="float: left;">
+              <div class="control">
+                <div class="select">
+                  <select id="hora1" [(ngModel)]="item.start_hour">
+                    <option *ngFor="let i of hours">{{i}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="field" style="float: left; padding: 5px;">
+      
+                :
+          
+            </div>
+            <div class="field" style="float: left;">
+              <div class="control">
+                <div class="select">
+                  <select id="minuto1" [(ngModel)]="item.start_minute" disabled="true">
+                    <option *ngFor="let i of minutes" >{{i}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+  
+          </td>
+          <td class="table-input">
+            <div class="field" style="float: left;">
+              <div class="control">
+                <div class="select">
+                  <select id="hora2" [(ngModel)]="item.end_hour" (change)="validhour($event, item.start_hour)">
+                    <option *ngFor="let i of hours">{{i}}</option>
+                  
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="field" style="float: left; padding: 5px;">
+      
+                :
+          
+            </div>
+            <div class="field" style="float: left;">
+              <div class="control">
+                <div class="select">
+                  <select id="minuto2" [(ngModel)]="item.end_minute"  disabled="true" >
+                    <option *ngFor="let i of minutes">{{i}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+
+    <div style="width: 100%; text-align: center;">
+      <button class="is-primary-button" type="button" (click)="post()">Guardar</button>
+    </div>
+  </mat-dialog-actions>

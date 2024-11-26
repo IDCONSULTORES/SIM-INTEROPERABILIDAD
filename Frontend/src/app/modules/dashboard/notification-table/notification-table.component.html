@@ -1,0 +1,138 @@
+<div class="notification__header px-4 pt-2">
+  <h3 class="title is-4 has-text-weight-bold m-0">
+    Actividad <br />
+    Reciente
+  </h3>
+  <div class="buttons">
+  <!--
+    <button
+      class="is-primary-button"
+      [ngClass]="{ button__active: selectedNot === 0 }"
+      type="button"
+      aria-label="Todos"
+      (click)="selectedNot = 0"
+    >    
+      Todos
+    </button>
+-->
+    <button
+      class="is-primary-button"
+      [ngClass]="{ button__active: selectedNot === 0 }"
+      type="button"
+      aria-label="Todos"
+      (click)="applyFilter('')"
+      >    
+      Todos
+    </button>
+    <button
+      class="is-primary-button"
+      [ngClass]="{ button__active: selectedNot === 1 }"
+      type="button"
+      aria-label="Notificaciones"
+      (click)="applyFilter('Notificaciones')"
+    >
+      Notificaciones
+    </button>
+    <button
+      class="is-primary-button"
+      [ngClass]="{ button__active: selectedNot === 2 }"
+      type="button"
+      aria-label="Exitosos"
+      (click)="applyFilter('Exitoso')"
+    >
+      Exitosos
+    </button>
+    <button
+      class="is-primary-button"
+      [ngClass]="{ button__active: selectedNot === 3 }"
+      type="button"
+      aria-label="No exitosos"
+      (click)="applyFilter('Fallido')"
+    >
+      No exitosos
+    </button>
+  </div>
+</div>
+<div class="white-cnt table-bg">
+  <div class="table-cnt">
+    <table class="general-table" mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="descripcion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Descripción <mat-icon>unfold_more</mat-icon>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="cell-elem">
+            <div class="cell-elem-text">
+              {{ element.description }}
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fecha">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Fecha <mat-icon>unfold_more</mat-icon>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="cell-elem">
+            <div class="cell-elem-text">
+              {{ element.eventDate }}
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="creado_por">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Creado por <mat-icon>unfold_more</mat-icon>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="cell-elem">
+            <div class="cell-elem-text">
+              {{ element.createBy }}
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="duracion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Duración <mat-icon>unfold_more</mat-icon>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="cell-elem">
+            <div class="cell-elem-text">
+              {{ element.duration }}
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="estado">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Estado <mat-icon>unfold_more</mat-icon>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="cell-elem">
+            <div class="cell-elem-text">
+              <div [class]="element.state === 'Exitoso' ? 'successful1':'successful2' ">
+                <p [class]="element.state === 'Exitoso' ? 'text_g':'text_f' ">{{element.state}}</p>
+              </div>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr
+        mat-row
+        *matRowDef="let element; columns: displayedColumns; let i = index"
+      ></tr>
+    </table>
+  </div>
+  <div class="floating-button">
+    <button (click)="exportToExcel()" mat-fab color="success" title="Exportar a Excel">
+      <mat-icon>print</mat-icon>
+    </button>
+  </div>
+</div>

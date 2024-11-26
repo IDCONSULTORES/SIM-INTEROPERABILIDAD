@@ -1,0 +1,41 @@
+<main class="is-vertical">
+  <div class="header-section white-cnt">
+    <div class="header-section__info">
+      <h1 class="header-section__info__title mb-0">Registro Usuario</h1>
+      <h2 class="header-section__info__subtitle mb-0">
+        Añade y administra los usuarios
+      </h2>
+    </div>
+  </div>
+  <div class="white-cnt registration mt-3">
+    <div
+      class="registration-cnt is-flex is-align-items-center is-justify-content-center is-flex-wrap-wrap"
+    >
+      <div
+        class="gray-cnt is-flex is-flex-direction-column is-align-items-center is-justify-content-center"
+        [ngClass]="{ is_inactive: selectedProfile !== '1' }"
+        (click)="selectedProfile = '1'"
+      >
+        <institute-icon></institute-icon>
+        <h3 class="title is-3 mt-4 mb-0 has-text-weight-bold">Institución</h3>
+      </div>
+      <div
+        class="gray-cnt is-flex is-flex-direction-column is-align-items-center is-justify-content-center"
+        [ngClass]="{ is_inactive: selectedProfile !== '2' }"
+        (click)="selectedProfile = '2'"
+      >
+        <admin-icon></admin-icon>
+        <h3 class="title is-3 mt-4 mb-0 has-text-weight-bold">Administrador</h3>
+      </div>
+    </div>
+    <div class="is-flex is-justify-content-center px-2 py-5">
+      <button
+        type="button"
+        class="is-primary-button"
+        (click)="redirectToForm()"
+      >
+        Confirmar
+      </button>
+    </div>
+  </div>
+</main>

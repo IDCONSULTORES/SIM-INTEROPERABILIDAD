@@ -1,0 +1,37 @@
+export interface Agreement {
+  id: string;
+  financial_entity: string;
+  financial_entity_name: string;
+  cci: string;
+  start_date: string;
+  etnicity: string;
+  codcat: string;
+  codcat_name: string;
+  zone: string;
+  zone_name: string;
+  sector: string;
+  sector_name: string;
+  type: number;
+  type_name: string;
+  community: string;
+  community_name: string;
+  representative: string;
+  representative_name: string;
+  representative_surname: string;
+  state: number;
+  state_name: string;
+  year: number;
+  years: number;
+  year_one: number;
+  year_two: number;
+  year_three?: any;
+  year_four: number;
+  year_five: number;
+  year_one_amount: number;
+  year_two_amount: number;
+  year_three_amount: number;
+  year_four_amount: number;
+  year_five_amount: number;
+  created: Date;
+  status: number;
+}

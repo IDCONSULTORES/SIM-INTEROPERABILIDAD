@@ -1,0 +1,18 @@
+version: "3"
+services:
+  orchestrator_sim_t:
+    container_name: orchestrator_sim_test
+    build:
+      context: .
+      dockerfile: dockerfile
+    environment:
+      - USERS_API_URI=http://192.168.30.61:8089
+      - ETL_API_URI=http://192.168.30.61:8500
+    ports:
+      - 8096:8080
+    networks:
+      - orchestrator_sim_network
+
+networks:
+  orchestrator_sim_network:
+    driver: bridge

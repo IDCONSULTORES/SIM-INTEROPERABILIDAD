@@ -1,0 +1,96 @@
+<div class="header">
+    <h2 class="header__title" mat-dialog-title>Editar programación</h2>
+    <mat-icon mat-dialog-close class="close-icon" type="button">close</mat-icon>
+  </div>
+  <mat-dialog-content>
+    <form class="form" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+      <div class="fields-group">
+        <div class="field">
+          <div class="control">
+            <input [value]="this.data.layerName" type="text" placeholder="Nombre de la tabla" />
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <div class="select">
+              <select id="sincronizador" formControlName = "synchroType" (change)="changeSelector()" id="sincronizador">
+                <option value="">Tipo de sincronización (*)</option>
+                <option>Programada</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fields-group">
+        <div class="field">
+          <div class="control">
+            <div class="select">
+              <select formControlName = "frequency" id="frecuencia">
+                <option value="">Frecuencia</option>
+                <option value = "daily">Diaria</option>
+                <option value = "weekly">Semanal</option>
+                <option value="biweekly">Quincenal</option>
+                <option value = "monthly">Mensual</option>
+                <option value = "annual">Anual</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fields-group">
+        <div class="field">
+          <div class="control">
+            <input formControlName = "startDate" type="date" placeholder="Fecha de inicio" />
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <input formControlName = "endDate" id="fin" type="date" placeholder="Fecha de fin" />
+          </div>
+        </div>
+        <div class="field">
+            <div class="control">
+              <div class="select">
+                <select formControlName = "day" id="dia">
+                  <option value="">Dia</option>
+                  <option value="monday">Lunes</option>
+                  <option value="tuesday">Martes</option>
+                  <option value="wednesday">Miércoles</option>
+                  <option value="thursday">Jueves</option>
+                  <option value="friday">Viernes</option>
+                  <option value="saturday">Sábado</option>
+                  <option value="sunday">Domingo</option>
+                </select>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="fields-group">
+        <div class="field is-border p-3">
+          <p class="mb-0">
+            <b>Programada,</b> permite crear tablas en base a la fecha de
+            sincronización.
+          </p>
+        </div>
+      </div>
+      <div class="fields-group">
+        <div class="field">
+          <div class="control">
+            <div class="select">
+              <select formControlName = "percent">
+                <option value="">% de coincidencia mayor o igual a:</option>
+                <option value=100>100%</option>
+                <option value=80>80%</option>
+                <option value=70>70%</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field"></div>
+      </div>
+      <div class="buttons">
+        <button class="is-primary-button">Actualizar</button>
+      </div>
+    </form>
+  </mat-dialog-content>
+  

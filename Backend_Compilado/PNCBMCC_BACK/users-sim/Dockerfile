@@ -1,0 +1,15 @@
+# Utilizamos una imagen base de Java
+FROM openjdk:8-jdk-alpine
+
+# Especificamos el directorio de trabajo en el contenedor
+WORKDIR /app
+
+# Copiamos los archivos del proyecto al contenedor
+COPY . .
+
+# Instalamos las dependencias y generamos el archivo .jar
+#RUN ./mvnw package -DskipTests
+
+EXPOSE 8080
+# Especificamos el comando para ejecutar la aplicación
+CMD ["java", "-jar", "users-0.0.1-SNAPSHOT.jar"]

@@ -1,0 +1,37 @@
+<div class="header is-primary-header">
+  <h2 class="header__title" mat-dialog-title>
+    {{ data.isActive ? 'Retirar Permisos' : 'Activar Permisos' }}
+  </h2>
+  <mat-icon mat-dialog-close type="button">close</mat-icon>
+</div>
+<mat-dialog-content>
+  <form class="form form-cnt" [formGroup]="deletePermissionForm" (ngSubmit)="saveForm()">
+    <div class="fields-group">
+      <h3 class="title is-4 has-text-centered has-text-weight-bold m-0">
+        ¿Desea eliminar a este usuario?
+      </h3>
+    </div>
+    <div class="fields-group">
+      <div class="field">
+        <label class="label">Clave Administrador sistema</label>
+        <p class="control has-icons-right">
+          <input
+            class="input"
+            formControlName="password"
+            [type]="passwordType"
+            placeholder="Password"
+          />
+          <span class="icon is-right" (click)="tooglePasswordInput()" style="pointer-events: all">
+            <i class="fas fa-eye"></i>
+          </span>
+        </p>
+      </div>
+    </div>
+    <div class="buttons">
+      <button class="is-primary-button" type="button" mat-dialog-close>Cancelar</button>
+      <button class="is-primary-button" type="submit" [disabled]="deletePermissionForm.invalid">
+        Guardar
+      </button>
+    </div>
+  </form>
+</mat-dialog-content>

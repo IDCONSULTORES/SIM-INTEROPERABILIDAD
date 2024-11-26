@@ -1,0 +1,276 @@
+<main class="is-vertical">
+  <div class="header-section white-cnt">
+    <div class="header-section__info">
+      <h1 class="header-section__info__title mb-0">Registro de servicios</h1>
+      <h2 class="header-section__info__subtitle mb-0">
+        Añade y actualiza la base actual de registros y ofertas
+      </h2>
+    </div>
+    <div class="header-section__actions">
+      <button class="button-primary" (click)="createService()">
+        Nuevo registro +
+      </button>
+      <div class="field">
+        <p class="control has-icons-left mb-0">
+          <input
+            class="input action-input"
+            type="text"
+            placeholder="Buscar servicios por dirección y/o nombres"
+            (keyup)="applyFilter($event)"
+          />
+          <span class="icon is-small is-left">
+            <search-icon></search-icon>
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="white-cnt table-bg">
+    <div class="table-cnt">
+      <table class="general-table" mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            ID <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.id }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Capa <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.name }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="pseudoName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Seudónimo <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem" style="min-width: 300px; text-align: center;">
+              <div class="cell-elem-text">
+                {{institution}} - {{ element.pseudoName }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tipo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Tipo <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                Activo
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="service">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Servicio <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.service }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="referencia">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Proyección <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.referencia }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+
+
+        <ng-container matColumnDef="createBy">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Usuario Crea <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.createBy }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="createAt">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Fecha Crea <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.createAt | date : "dd/MM/yyyy" }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="modifyBy">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Usuario Modifica <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.modifyBy }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="modifyAt">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Fecha Modifica <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.modifyAt | date : "dd/MM/yyyy" }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="availability">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Disponibilidad <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div style="text-align: center;" class="cell-elem-text">
+                {{days[element.availability[0]?.dayOfWeek  || '']}}
+                {{element.availability[0]?.timeStart}} - {{element.availability[0]?.timeEnd}}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="duration">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Duración <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.duration || 0}} seg
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="isAvailable">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Disponible <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.isAvailable }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="percent">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            % de Cambios <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem" style="text-align: center;">
+              <div class="cell-elem-text">
+                {{ element.percent }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nextStep">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Siguiente paso <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div style="text-align: center;" class="cell-elem">
+              <div class="cell-elem-text" style="color: red;  min-width: 520px;">
+                {{ element.nextStep }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="accion">
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                <div class="is-flex is-action">
+                  <img *ngIf="element.isAvailable=='Disponible'" style="cursor: pointer;" src="./assets/iconos/aspa.svg">
+                  <img *ngIf="element.isAvailable!='Disponible'" style="cursor: pointer;" src="./assets/iconos/equis.svg">
+                  <demand-icon
+                  *ngIf="element.service=='WFS'"
+                  class="icon"
+                  (click)="scheduleAttributes(element)"
+                ></demand-icon>
+                <demand-icon-disabled
+                *ngIf="element.service!='WFS'"
+                class="icon"
+              ></demand-icon-disabled>
+                  <edit-icon
+                  *ngIf="element.service=='WFS'"
+                    class="icon"
+                    (click)="editService(element)"
+                  ></edit-icon>
+                  <edit-icon-disabled
+                  *ngIf="element.service!='WFS'"
+                  class="icon"
+                  
+                ></edit-icon-disabled>
+                  <delete-icon
+                    class="icon"
+                    (click)="deleteService(element)"
+                  ></delete-icon>
+                </div>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns; sticky: true"
+        ></tr>
+        <tr
+          mat-row
+          *matRowDef="let element; columns: displayedColumns; let i = index"
+        ></tr>
+      </table>
+    </div>
+  </div>
+</main>

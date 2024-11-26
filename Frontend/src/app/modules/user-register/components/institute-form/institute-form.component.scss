@@ -1,0 +1,171 @@
+main {
+  padding: 1rem;
+  height: calc(100% - 57px);
+  width: 100%;
+  background-color: var(--gray100);
+  overflow-y: auto;
+
+  .header-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    width: 100%;
+    padding: 1.62rem;
+
+    &__info {
+      &__title {
+        color: var(--black);
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: normal;
+      }
+      &__subtitle {
+        color: var(--black);
+        font-size: 1.25rem;
+        font-weight: 400;
+      }
+    }
+
+    &__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+
+      .field {
+        width: 30rem;
+        .action-input {
+          border-radius: var(--border-radious);
+          border: 1px solid #273b5b;
+          font-size: 1.25rem;
+          color: var(--black);
+        }
+
+        .control.has-icons-left .icon {
+          left: 10px;
+          height: 3rem;
+        }
+      }
+    }
+  }
+
+  .options {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .page-cnt {
+    height: calc(100% - 40px);
+  }
+
+  .institute-form {
+    height: 100%;
+    .title {
+      align-self: start;
+    }
+    .control.has-icons-right .icon.is-right {
+      right: 1rem;
+      top: 0.75rem;
+      cursor: pointer;
+      pointer-events: visible;
+    }
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 2rem 1.5rem;
+    align-items: center;
+    width: 100%;
+
+    overflow: auto;
+    max-height: calc(100vh - 45px);
+
+    &__subtitle {
+      font-size: 1rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 0;
+    }
+
+    .is-small {
+      font-size: 0.75rem;
+      padding: 4px 6px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .fields-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      width: 100%;
+
+      .is-border {
+        border-radius: 0.875rem;
+        border: 3px solid var(--primary-color);
+        color: var(--black);
+        font-size: 1rem;
+      }
+    }
+
+    .field {
+      flex: 1;
+      margin-bottom: 0.5rem;
+      .control {
+        height: fit-content;
+        .select {
+          width: 100%;
+        }
+      }
+      select,
+      input {
+        height: fit-content;
+        width: 100%;
+        color: var(--primary-color);
+        border: 1px solid var(--primary-color);
+        border-radius: 0.875rem;
+        background: var(--input-bg);
+        line-height: 2.5rem;
+        font-size: 1.5rem;
+      }
+      input {
+        padding: 0.75rem 1rem;
+        height: 4rem;
+        &::placeholder {
+          color: var(--primary-color);
+        }
+      }
+      input[type="password"] {
+        padding-right: 4rem;
+      }
+
+      .select,
+      select {
+        height: 4rem;
+      }
+    }
+
+    .favicon-icon {
+      background-color: #079842;
+      box-shadow: none;
+      margin-top: 20px;
+    }
+  }
+
+  .upload-button {
+    width: 100%;
+    font-size: 1.75rem;
+    font-weight: 700;
+    border-radius: 0.875rem;
+    padding: 1.25rem;
+  }
+}

@@ -1,0 +1,97 @@
+mat-dialog-content {
+    max-height: 100vh;
+  }
+  
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+    /* Firefox */
+  }
+  
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: #c9c9c9;
+    border-radius: 20px;
+    border: 3px solid #f0f0f7;
+  }
+
+  .circle-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 550px; /* Ancho ajustado según sea necesario */
+    margin: 0 auto; /* Centra horizontalmente */
+    padding: 10px;
+  }
+  
+  .circle {
+    width: 100px; /* Cambia el tamaño de los círculos aquí */
+    height: 80px; /* Cambia el tamaño de los círculos aquí */
+    background-color: #FFFFFF;
+    color: #273b5b;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 1px solid #273b5b;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .rectangular-container {
+    display: flex;
+    width: 550px; /* Ancho ajustado según sea necesario */
+    margin: 20px auto; /* Espacio entre la lista de círculos y el contenedor rectangular */
+  }
+  
+  .left-content {
+    flex: 1;
+    background-color: #deebff; /* Color de fondo del lado izquierdo */
+    padding: 20px; /* Espaciado interno */
+  }
+  
+  .right-content {
+    flex: 1;
+    background-color: #deebff; /* Color de fondo del lado derecho */
+    padding: 20px; /* Espaciado interno */
+  }
+
+  .title
+  {
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .plain
+  {
+    color: black;
+    font-weight: lighter;
+    font-size: 16px;
+  }
+
+  .circle.active {
+    background-color: #273b5b; /* Cambia el color de fondo cuando está activo */
+    color: #fff; /* Cambia el color del texto cuando está activo */
+  }
+
+  .add-icon {
+    position: relative;
+    button {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      z-index: 2;
+      background-color: #273b5b;
+    }
+  }

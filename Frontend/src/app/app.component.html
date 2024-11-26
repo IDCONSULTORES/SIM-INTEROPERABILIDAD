@@ -1,0 +1,24 @@
+<!-- <app-nav-bar *ngIf="showSiderBar"></app-nav-bar>
+<app-aside-bar *ngIf="showSiderBar"></app-aside-bar> -->
+<ToastContainer></ToastContainer>
+<mat-sidenav-container style="height: 100%">
+  <mat-sidenav
+    [mode]="isMobileVersion ? 'over' : 'side'"
+    *ngIf="showSiderBar"
+    [opened]="sidebarOpen"
+    class="sidebar"
+    (closedStart)="sidebarOpen = false"
+    [ngClass]="{'is-full-w': isMobileVersion}"
+  >
+    <app-sidebar (closeSiderbarEvent)="sidebarOpen = false"></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-navbar
+      (emitToogle)="sidebarOpen = !sidebarOpen"
+      *ngIf="showSiderBar"
+    ></app-navbar>
+    
+      <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

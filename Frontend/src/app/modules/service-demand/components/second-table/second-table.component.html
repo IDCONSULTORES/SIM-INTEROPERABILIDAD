@@ -1,0 +1,122 @@
+<div class="white-cnt table-bg">
+    <div class="table-cnt">
+      <table class="general-table" mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="nameLayer">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Capa <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.nameLayer }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="geomType">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Tipo <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.geomType }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="executeDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Fecha de ejecución <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.executeDate }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Cantidad de registros <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.quantity }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="news">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Nuevos <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{element.news}}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="exists">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Existentes<mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.exists }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="deleted">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Eliminados <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.deleted }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="coincidence">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Coincidencia <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.coincidence }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+  
+        
+  
+       
+  
+
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr
+          mat-row
+          *matRowDef="let element; columns: displayedColumns; let i = index"
+        ></tr>
+      </table>
+    </div>
+  </div>
+  

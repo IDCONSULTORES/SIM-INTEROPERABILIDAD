@@ -1,0 +1,117 @@
+<main class="is-vertical">
+  <div class="header-section white-cnt">
+    <div class="header-section__info">
+      <h1 class="header-section__info__title mb-0">Configurar Base de Datos</h1>
+      <h2 class="header-section__info__subtitle mb-0">
+        Administra y configura la base de los datos registrados
+      </h2>
+    </div>
+  </div>
+  <div class="mt-4 white-cnt">
+    <form class="form" *ngIf="isEditMode"  [formGroup]="settingForm" (ngSubmit)="onSubmit()">
+      <div class="fields-group">
+        <div class="field">
+          <div class="control">
+            <input formControlName="server_type" type="text" placeholder="Plataforma de Base de Datos" />
+          </div>
+        </div>
+      </div>
+      <div class="fields-group">
+        <div class="field">
+          <div class="control">
+            <input formControlName="name_server" type="text" placeholder="Destino" />
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <input formControlName="port" type="text" placeholder="Puerto" />
+          </div>
+        </div>
+      </div>
+      <div class="fields-group">
+        <div class="field">
+          <div class="control">
+            <input formControlName="user_db" type="text" placeholder="Usuario" />
+          </div>
+        </div>
+        <div class="field">
+          <div class="control has-icons-right">
+            <input formControlName="psswd_server" type="{{ showPassword2 ? 'text' : 'password' }}" placeholder="Contraseña" />
+            <div *ngIf="settingForm.get('psswd_server')?.hasError('required') && settingForm.get('psswd_server')?.touched"
+            class="text-danger">La contraseña es obligatoria.</div>
+          <div *ngIf="settingForm.get('psswd_server')?.hasError('invalidPassword') && settingForm.get('psswd_server')?.touched"
+            class="text-danger">La contraseña debe contener números, letras y al menos un símbolo.</div>
+            <span (click)="togglePasswordVisibility2()" class="icon is-right">
+              <eye-icon> {{ showPassword2 ? 'Ocultar' : 'Mostrar' }}</eye-icon>
+            </span>
+          </div>
+
+        </div>
+      </div>
+      <div class="fields-group">
+        <div class="field">
+          <div class="control">
+            <input formControlName="database_name" type="text" placeholder="Base de Datos" />
+          </div>
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="is-primary-button" type="submit">Guardar</button>
+      </div>
+    </form>
+
+    <div class="form" *ngIf="!isEditMode">
+      <div class="fields-group">
+        <div class="field">
+          <div class="control">
+            <p class="no-edit-text">
+              {{bd}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="fields-group">
+        <div class="field">
+          <div class="control">
+            <p class="no-edit-text">Destino: {{destino}}</p>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <p class="no-edit-text">Puerto: {{puerto}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="fields-group">
+        <div class="field">
+          <div class="control">
+            <p class="no-edit-text">Usuario: {{usuario}}</p>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <p class="no-edit-text">Contraseña: *******</p>
+          </div>
+        </div>
+      </div>
+      <div class="fields-group">
+        <div class="field">
+          <div class="control">
+            <p class="no-edit-text">Base de Datos: {{plataforma}}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button
+          id="edit-button"
+          class="is-primary-button"
+          type="button"
+          (click)="isEditMode = true"
+        >
+          Editar
+        </button>
+      </div>
+    </div>
+  </div>
+</main>

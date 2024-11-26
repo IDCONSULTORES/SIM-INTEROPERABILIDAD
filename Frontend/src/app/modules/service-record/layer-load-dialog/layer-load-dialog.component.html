@@ -1,0 +1,26 @@
+
+<div class="header">
+    <mat-icon
+      mat-dialog-close
+      class="close-icon"
+      type="button"
+      >close</mat-icon
+    >
+  </div>
+<mat-dialog-content>
+    <div style="text-align: center;">
+        <img src="./assets/imagenes/warning.svg">
+    </div>
+    <div style="text-align: center;">
+        <h2>¿Desea proceder con la carga de la capa en su base de datos?</h2>
+    </div>
+</mat-dialog-content>
+
+    
+
+<mat-dialog-actions style="justify-content: center;">
+        <button (click)="load()" style="margin-right: 50px;" class="is-primary-button" type="button" mat-dialog-close>
+        Si
+      </button> 
+      <button mat-dialog-close class="is-primary-button" type="button">No</button>
+</mat-dialog-actions>

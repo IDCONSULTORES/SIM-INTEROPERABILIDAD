@@ -1,0 +1,162 @@
+<main class="cnt">
+  <div class="columns m-0 p-0">
+    <!--
+    <div class="column is-3">
+      <div class="stat-cnt white-cnt">
+        <p class="stat__value">131</p>
+        <p class="stat">Capas GDB de Producción</p>
+      </div>
+    </div>
+  -->
+    <div class="column is-4">
+      <div class="stat-cnt white-cnt">
+        <p class="stat__value">{{layers}}</p>
+        <p class="stat">Capas inscritas</p>
+      </div>
+    </div>
+    <div class="column is-4">
+      <div class="stat-cnt white-cnt">
+        <p class="stat__value">{{schedules}}</p>
+        <p class="stat">Programaciones</p>
+      </div>
+    </div>
+    <div class="column is-4">
+      <div class="stat-cnt white-cnt">
+        <p class="stat__value">{{wfs}}</p>
+        <p class="stat">WFS inscritos</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="event-graph p-2">
+    <div class="white-cnt p-4">
+      <div
+        class="is-flex is-justify-content-space-between is-align-content-center"
+      >
+        <div>
+          <h3 class="title is-4 has-text-weight-bold m-0">Eventos</h3>
+          <button mat-button (click)="clearfilter()">Limpiar</button>
+          <mat-form-field class="example-form-field" appearance="outline">
+            <mat-date-range-input [rangePicker]="rangePicker">
+              <input matStartDate placeholder="Fecha de inicio" [(ngModel)]="fechaInicio" />
+              <input matEndDate placeholder="Fin" [(ngModel)]="fechaFin" />
+            </mat-date-range-input>
+            <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="rangePicker"
+            ></mat-datepicker-toggle>
+            <!-- #docregion date-range-picker-actions -->
+            <mat-date-range-picker #rangePicker>
+              <mat-date-range-picker-actions>
+                <button mat-button matDateRangePickerCancel>Cancelar</button>
+                <button
+                  mat-raised-button
+                  color="primary"
+                  matDateRangePickerApply
+                  (click)="obtenerFechas()"
+                >
+                  Aceptar
+                </button>
+              </mat-date-range-picker-actions>
+            </mat-date-range-picker>
+            <!-- #enddocregion date-range-picker-actions -->
+          </mat-form-field>
+        </div>
+        <div class="buttons is-flex is-flex-wrap-wrap p-2">
+<!--
+          <button
+            class="is-primary-button"
+            [ngClass]="{ button__active: selectedGraph === 0 }"
+            type="button"
+            aria-label="Todos"
+            (click)="change_chart(0)"
+          >
+            Todos
+          </button>
+-->
+          <button
+            class="is-primary-button"
+            [ngClass]="{ button__active: selectedGraph === 1 }"
+            type="button"
+            aria-label="Lecturas WFS"
+            (click)="change_chart(1)"
+          >
+            Lecturas WFS
+          </button>
+          <button
+            class="is-primary-button"
+            [ngClass]="{ button__active: selectedGraph === 2 }"
+            type="button"
+            aria-label="Acciones sobre programaciones"
+            (click)="change_chart(2)"
+          >
+            Acciones sobre programaciones
+          </button>
+          <button
+            class="is-primary-button"
+            [ngClass]="{ button__active: selectedGraph === 3 }"
+            type="button"
+            aria-label="Acciones sobre capas"
+            (click)="change_chart(3)"
+          >
+            Acciones sobre capas
+          </button>
+          <button
+            class="is-primary-button"
+            [ngClass]="{ button__active: selectedGraph === 4 }"
+            type="button"
+            aria-label="Inserciones"
+            (click)="change_chart(4)"
+          >
+            Inserciones
+          </button>
+          <button
+            class="is-primary-button"
+            [ngClass]="{ button__active: selectedGraph === 5 }"
+            type="button"
+            aria-label="ETL"
+            (click)="change_chart(5)"
+          >
+            ETL
+          </button>
+        </div>
+      </div>
+      <div><app-basic-chart-area [series]="chartOptions.series" 
+        [xaxis]="chartOptions.xaxis"
+        [yaxis]="chartOptions.yaxis"
+        [legend]="chartOptions.legend"
+        [fill]="chartOptions.fill"
+       ></app-basic-chart-area></div>
+    </div>
+  </div>
+
+  <div class="columns m-0 p-0">
+    <div class="column is-3">
+      <div
+        class="info-cnt white-cnt is-flex is-flex-direction-column has-text-left px-4 py-2"
+      >
+        <h3 class="title is-4 has-text-weight-bold m-0">Estados</h3>
+        <app-basic-pie-component [series]="dataestado_val"></app-basic-pie-component>
+      </div>
+    </div>
+    <div class="column is-3">
+      <div
+        class="info-cnt white-cnt is-flex is-flex-direction-column has-text-left px-4 py-2"
+      >
+        <h3 class="title is-4 has-text-weight-bold m-0 has-text-left">
+          Servicios
+        </h3>
+        <app-basic-donut-component
+        
+   
+        ></app-basic-donut-component>
+      </div>
+    </div>
+    <div class="column is-6">
+      <div class="info-cnt white-cnt">
+        <app-notification-table></app-notification-table>
+      </div>
+    </div>
+  </div>
+</main>

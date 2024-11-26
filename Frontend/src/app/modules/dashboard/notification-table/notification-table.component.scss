@@ -1,0 +1,99 @@
+.table-cnt {
+  max-height: 250px;
+}
+
+.table-bg {
+  margin-top: 0;
+}
+
+.general-table .mat-header-row .mat-header-cell,
+.general-table .mat-row .mat-cell .cell-elem-text {
+  font-size: 1rem !important;
+}
+
+.general-table .mat-row .mat-cell .cell-elem {
+  height: 3rem;
+  padding: 0.5rem;
+}
+
+.general-table .mat-row,
+.general-table .mat-header-row {
+  height: 4rem;
+}
+
+.successful,
+.fail {
+  border-radius: 0.3125rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem 0;
+}
+
+.notification__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0.5rem;
+  gap: 0.5rem;
+
+  .is-primary-button {
+    font-size: 1rem;
+    padding: 0.5rem;
+    background-color: var(--input-bg);
+    color: var(--black);
+    transition: background-color 500ms linear;
+  }
+
+  .button__active {
+    background-color: var(--primary-color);
+    color: var(--white);
+  }
+}
+
+.successful1 {
+  border: 1px solid #5cc928;
+  &__text_g {
+    color: #5cc928;
+    margin: 0;
+  }
+}
+.text_g {
+  color: #5cc928;
+  margin: 0;
+}
+.text_f {
+  color: #c93b28;
+  margin: 0;
+}
+
+.successful2 {
+  border: 1px solid #c93b28;
+  &__text_f {
+    color: #c93b28;
+    margin: 0;
+  }
+}
+
+.fail {
+  border: 1px solid #c92828;
+  &__text {
+    color: #c92828;
+    margin: 0;
+  }
+}
+.floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  /* Agrega otros estilos como tamaño, colores, etc., según tus necesidades */
+}

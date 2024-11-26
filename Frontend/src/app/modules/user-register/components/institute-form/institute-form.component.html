@@ -1,0 +1,157 @@
+<main class="is-vertical">
+  <div class="header-section white-cnt">
+    <div class="header-section__info">
+      <h1 class="header-section__info__title mb-0">Registro Usuario</h1>
+      <h2 class="header-section__info__subtitle mb-0">Usuario Institución</h2>
+    </div>
+  </div>
+  <div class="institute-form mt-4 white-cnt">
+    <form class="form" *ngIf="!uploadPhoto" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <h3 class="title is-3 has-text-weight-bold">Información Básica</h3>
+      <div class="fields-group">
+        <div class="field">
+          <div class="control">
+            <input formControlName="name"  type="text" placeholder="Nombre" />
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <div class="select">
+              <select formControlName="institutionType">
+                <option value="">Tipo de institución</option>
+                <option value="privada">Privada</option>
+                <option value="publica">Pública</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fields-group">
+        <div class="field">
+          <div class="control">
+            <div class="select">
+              <select formControlName="identificationType">
+                <option value="">Tipo de identificación</option>
+                <option value="dni">DNI</option>
+                <option value="other">Otros</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <input formControlName="identificationNumber" type="text" placeholder="N° de identificación" />
+          </div>
+        </div>
+      </div>
+      <h3 class="title is-3 has-text-weight-bold mt-4">
+        Información de Usuario
+      </h3>
+      <div class="fields-group">
+        <div class="field">
+          <div class="control">
+            <input
+              formControlName="username"
+              type="text"
+              placeholder="Usuario"
+              name="username"
+              autocomplete="username"
+            />
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <input
+            formControlName="email"
+              type="text"
+              placeholder="Correo electrónico"
+              name="email"
+              autocomplete="email"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="fields-group">
+        <div class="field">
+          <div class="control">
+            <input
+              formControlName="region"
+              type="text"
+              placeholder="Región"
+              name="region"
+              autocomplete="region"
+            />
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <input
+              formControlName="phone"
+              type="text"
+              placeholder="Teléfono"
+              name="phone"
+              autocomplete="phone"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="fields-group">
+        <div class="field">
+          <div class="control has-icons-right">
+            <input
+            formControlName="password"
+              type="{{ showPassword2 ? 'text' : 'password' }}"
+              id="new-password"
+              name="new-password"
+              autocomplete="new-password"
+              placeholder="Contraseña"
+            />
+            <div *ngIf="userForm.get('password')?.hasError('required') && userForm.get('password')?.touched"
+            class="text-danger">La contraseña es obligatoria.</div>
+          <div *ngIf="userForm.get('password')?.hasError('invalidPassword') && userForm.get('password')?.touched"
+            class="text-danger">La contraseña debe contener números, letras y al menos un símbolo.</div>
+            <span (click)="togglePasswordVisibility2()" class="icon is-right">
+              <eye-icon> {{ showPassword2 ? 'Ocultar' : 'Mostrar' }}</eye-icon>
+            </span>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control has-icons-right">
+            <input
+              formControlName="confirmPassword"
+              type="{{ showPassword ? 'text' : 'password' }}"
+              id="confirm-password"
+              name="new-password"
+              autocomplete="new-password"
+              placeholder="Verificar contraseña"
+            />
+            <span (click)="togglePasswordVisibility()" class="icon is-right">
+              <eye-icon> {{ showPassword ? 'Ocultar' : 'Mostrar' }}</eye-icon>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="fields-group">
+        <div class="field">
+          <div class="control">
+            <button
+              type="button"
+              class="is-primary-button upload-button"
+              (click)="showUploadPhoto()"
+            >
+              Agregar foto
+            </button>
+          </div>
+        </div>
+        <div class="field"></div>
+      </div>
+      <div class="buttons">
+        <button class="is-primary-button mt-4" type="submit">Guardar</button>
+      </div>
+    </form>
+    <app-upload-photo
+      *ngIf="uploadPhoto"
+      (saveImage)="catchPhoto($event)"
+    ></app-upload-photo>
+  </div>
+</main>

@@ -1,0 +1,115 @@
+<div class="sidebar-cnt is-sidebar">
+  <img
+    class="sidebar-cnt__image"
+    src="assets/iconos/sim_logo_lite.svg"
+    alt="Bosques"
+  />
+  <h1 class="profile-name"></h1>
+  <div class="menu-cnt">
+    <li class="menu-list">
+      <ul>
+        <a
+          class="menu-list__item"
+          routerLink="registro-de-servicios"
+          routerLinkActive="menu-list__item--active"
+        >
+          <create-offer-icon></create-offer-icon>
+          Registro de servicios
+        </a>
+        <div class="overlay"></div>
+      </ul>
+      <ul>
+        <a
+          class="menu-list__item"
+          routerLink="oferta-de-servicios"
+          routerLinkActive="menu-list__item--active"
+        >
+          <service-icon></service-icon>
+          Oferta de servicios
+        </a>
+      </ul>
+      <ul>
+        <a
+          class="menu-list__item"
+          routerLink="demandas-programadas"
+          routerLinkActive="menu-list__item--active"
+        >
+          <service-icon></service-icon>
+          Demandas programadas
+        </a>
+      </ul>
+      <ul>
+        <a
+          class="menu-list__item"
+          routerLink="dashboard"
+          routerLinkActive="menu-list__item--active"
+        >
+          <dashboard-icon></dashboard-icon>
+          Dashboard
+        </a>
+      </ul>
+      <ul>
+        <a
+          class="menu-list__item"
+          routerLink="configuracion"
+          routerLinkActive="menu-list__item--active"
+        >
+          <config-icon></config-icon>
+          Configuración
+        </a>
+      </ul>
+    </li>
+    <li class="menu-list">
+      <ul *ngIf="this.email=='admin@admin.com'">
+        <a
+          class="menu-list__item"
+          routerLink="lista-usuarios"
+          routerLinkActive="menu-list__item--active"
+        >
+          <listuser-icon></listuser-icon>
+          Usuarios
+        </a>
+        <div class="overlay"></div>
+      </ul>
+      <ul>
+        <a
+          class="menu-list__item"
+          routerLink="registro-de-usuarios"
+          routerLinkActive="menu-list__item--active"
+        >
+          <create-user-icon></create-user-icon>
+          Registro de usuario
+        </a>
+      </ul>
+      <ul>
+        <a
+          class="menu-list__item"
+          routerLink="perfil"
+          routerLinkActive="menu-list__item--active"
+        >
+          <user-icon></user-icon>
+          Perfil
+        </a>
+      </ul>
+
+      <ul>
+        <div class="menu-list__item" (click)="logout()">
+          <sing-out-icon></sing-out-icon>
+          Cerrar Sesión
+        </div>
+      </ul>
+
+
+
+    </li>
+
+
+
+  </div>
+    <a
+    style="text-decoration: none; color: white; font-weight: bold;  margin-left: 60px; "
+    href="https://www.imasd.com.pe/"          
+    >
+    <img src="assets/iconos/desa_i+d.svg" alt="" style="width:200px; height:50px; ">
+    </a>
+</div>

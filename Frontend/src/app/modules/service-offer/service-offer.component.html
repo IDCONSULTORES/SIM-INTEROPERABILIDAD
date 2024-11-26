@@ -1,0 +1,134 @@
+<main class="is-vertical">
+  <div class="header-section white-cnt">
+    <div class="header-section__info">
+      <h1 class="header-section__info__title mb-0">
+        Ofertas de Servicios - SERNANP
+      </h1>
+      <h2 class="header-section__info__subtitle mb-0">
+        Añade y administra la base actual de registros WFS
+      </h2>
+    </div>
+
+    <div class="header-section__actions">
+      <div class="field">
+        <p class="control has-icons-left mb-0">
+          <input
+            class="input action-input"
+            id="main-searcher"
+            type="text"
+            placeholder="Buscar servicios por dirección y/o nombres"
+            (keyup)="apply($event)"
+          />
+          <span class="icon is-small is-left">
+            <search-icon-offer></search-icon-offer>
+          </span>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="general-acordion" style="display: none;" id="v_tabla">
+    <div class="table-cnt">
+      <table class="general-table" mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Capa <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.name }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="service">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Servicio <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.service }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="source">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Institución <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.source }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="referencia">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Proyección <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.referencia }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="createBy">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Usuario Crea <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.createBy  }}
+              </div>
+            </div>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="createAt">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Fecha  <mat-icon>unfold_more</mat-icon>
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                {{ element.createAt   }}
+              </div>
+            </div>
+          </td>
+        </ng-container> 
+      
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr
+          mat-row
+          *matRowDef="let element; columns: displayedColumns; let i = index"
+        ></tr>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="general-acordion">
+    <mat-accordion multi>
+      <mat-expansion-panel *ngFor="let institution  of institutions">
+        <mat-expansion-panel-header>
+          <mat-panel-title> {{institution }} </mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-service-offer-table [type]="institution" #datatable></app-service-offer-table>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  
+</main>

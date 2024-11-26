@@ -1,0 +1,29 @@
+.white-cnt {
+  border-radius: 0.5625rem;
+  background: var(--white);
+}
+
+.is-vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.is-flex-centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.is-full-s {
+  width: 100%;
+  height: 100%;
+}
+
+.is-text-centered {
+  text-align: center;
+}
+
+.has-shadow {
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}

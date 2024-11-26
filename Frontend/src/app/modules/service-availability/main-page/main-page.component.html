@@ -1,0 +1,102 @@
+<main class="is-vertical">
+  <div class="white-cnt table-bg">
+    <div class="table-cnt">
+      <table class="crono-table" mat-table [dataSource]="dataSource" matSort id="crono-table" #cronoTable>
+        <ng-container matColumnDef="time">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element" >
+            <div class="cell-elem">
+              <div class="cell-elem-text">
+                00:00
+              </div>
+            </div>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="sunday">
+          <th mat-header-cell *matHeaderCellDef class="first-h-cell">
+            Domingo
+          </th>
+          <td mat-cell *matCellDef="let element" (click)="handleClick(element, 'sunday')">
+            <div class="cell-elem" [ngClass]="{'color1': element.days.sunday.clicked === 1, 'color2': element.days.sunday.clicked === 2, 'color3': element.days.sunday.clicked === 3}">
+              {{ element.days.sunday.text }}
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="monday">
+          <th mat-header-cell *matHeaderCellDef class="first-h-cell">
+            Lunes
+          </th>
+          <td mat-cell *matCellDef="let element" (click)="handleClick(element, 'monday')">
+            <div class="cell-elem" [ngClass]="{'color1': element.days.monday.clicked === 1, 'color2': element.days.monday.clicked === 2, 'color3': element.days.monday.clicked === 3}">
+              {{ element.days.monday.text }}
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tuesday">
+          <th mat-header-cell *matHeaderCellDef class="first-h-cell">
+            Martes
+          </th>
+          <td mat-cell *matCellDef="let element" (click)="handleClick(element, 'tuesday')">
+            <div class="cell-elem" [ngClass]="{'color1': element.days.tuesday.clicked === 1, 'color2': element.days.tuesday.clicked === 2, 'color3': element.days.tuesday.clicked === 3}">
+              {{ element.days.tuesday.text }}
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="wednesday">
+          <th mat-header-cell *matHeaderCellDef class="first-h-cell">
+            Miércoles
+          </th>
+          <td mat-cell *matCellDef="let element" (click)="handleClick(element, 'wednesday')">
+            <div class="cell-elem" [ngClass]="{'color1': element.days.wednesday.clicked === 1, 'color2': element.days.wednesday.clicked === 2, 'color3': element.days.wednesday.clicked === 3}">
+              {{ element.days.wednesday.text }}
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="thursday">
+          <th mat-header-cell *matHeaderCellDef class="first-h-cell">
+            Jueves
+          </th>
+          <td mat-cell *matCellDef="let element" (click)="handleClick(element, 'thursday')">
+            <div class="cell-elem" [ngClass]="{'color1': element.days.thursday.clicked === 1, 'color2': element.days.thursday.clicked === 2, 'color3': element.days.thursday.clicked === 3}">
+              {{ element.days.thursday.text }}
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="friday">
+          <th mat-header-cell *matHeaderCellDef class="first-h-cell">
+            Viernes
+          </th>
+          <td mat-cell *matCellDef="let element" (click)="handleClick(element, 'friday')">
+            <div class="cell-elem" [ngClass]="{'color1': element.days.friday.clicked === 1, 'color2': element.days.friday.clicked === 2, 'color3': element.days.friday.clicked === 3}">
+              {{ element.days.friday.text }}
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="saturday">
+          <th mat-header-cell *matHeaderCellDef class="first-h-cell">
+            Viernes
+          </th>
+          <td mat-cell *matCellDef="let element" (click)="handleClick(element, 'saturday')">
+            <div class="cell-elem" [ngClass]="{'color1': element.days.saturday.clicked === 1, 'color2': element.days.saturday.clicked === 2, 'color3': element.days.saturday.clicked === 3}">
+              {{ element.days.saturday.text }}
+            </div>
+          </td>
+        </ng-container>
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns; sticky: true"
+        ></tr>
+        <tr
+          mat-row
+          *matRowDef="let element; columns: displayedColumns; let i = index"
+        ></tr>
+      </table>
+    </div>
+  </div>
+</main>

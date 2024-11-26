@@ -1,0 +1,32 @@
+<div
+  class="upload-form is-flex is-flex-direction-column is-justify-content-center is-align-items-center"
+  id="drop_zone"
+  *ngIf="!imageUrl"
+>
+  <upload-icon></upload-icon>
+  <h3 class="title is-4 mt-4">
+    Arrastre su foto o haga click
+    <span class="link" (click)="openFileExplorer()">aquí</span>
+  </h3>
+  <input
+    id="file-input"
+    type="file"
+    name="resume"
+    (change)="changeFileName($event)"
+  />
+</div>
+
+<div
+  class="upload-form is-flex is-flex-direction-column is-justify-content-center is-align-items-center"
+  *ngIf="imageUrl"
+>
+  <img class="image-uploaded" [src]="imageUrl" alt="Imágen subida" />
+  <div class="buttons mt-4">
+    <button type="button" class="is-primary-button" (click)="saveForm()">
+      Confirmar
+    </button>
+    <button type="button" (click)="resetData()" class="is-primary-button">
+      Cambiar Imagen
+    </button>
+  </div>
+</div>

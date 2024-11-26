@@ -1,0 +1,66 @@
+#contenedor {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 60%;
+    height: 50%;
+    border-color: black;
+    border-collapse: collapse;
+    border-style: solid;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    overflow-y: visible;
+  }
+  
+  #contenedor > div {
+    width: 50%;
+  }
+  
+  .left-login {
+    background-color: #03dc62;
+    align-items: center;
+    text-align: center;
+  }
+  .circle {
+    width: 150px;
+    height: 150px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: white;
+    position: relative;
+    display: flex;
+    align-items: center;
+    left: 30%;
+    top: 20%;
+  }
+  body {
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  
+  mat-sidenav-container {
+    height: 100vh;
+  }
+  
+  mat-sidenav-content {
+    overflow: hidden;
+  }
+  
+  .main-content {
+    height: calc(100% - 63px);
+    width: 100%;
+    overflow: auto;
+    background-color: #ececec;
+  }
+  
+  .isLoggin {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+  }
+  

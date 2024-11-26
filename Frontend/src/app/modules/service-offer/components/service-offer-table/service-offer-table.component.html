@@ -1,0 +1,179 @@
+<div class="white-cnt table-bg">
+  
+  <button class="button-primary" (click)="tab = 0">
+    Ofertas
+  </button>
+  <button class="button-primary" (click)="tab = 1">
+    Disponibilidad
+  </button>
+  <div *ngIf="tab===1" class="button-container">
+  </div>
+
+  <div *ngIf="tab===0" class="button-container">
+    <p class="control has-icons-left mb-0">
+      <input
+        class="input action-input"
+        type="text"
+        placeholder="Buscar servicios por dirección y/o nombres"
+        (keyup)="applyFilter2($event)"
+      />
+      <span class="icon is-small is-left">
+        <search-icon-offer></search-icon-offer>
+      </span>
+    </p>
+  </div>
+
+
+  <app-skeleton-loading *ngIf="loadingData"></app-skeleton-loading>
+  <div id="offer-table" class="table-cnt" *ngIf="tab===0">
+    <table class="general-table" mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="capa">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Capa <mat-icon>unfold_more</mat-icon>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="cell-elem">
+            <div class="cell-elem-text">
+              {{ element.name }}
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="tipo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Tipo <mat-icon>unfold_more</mat-icon>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="cell-elem">
+            <div class="cell-elem-text">
+              Activo
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="servicio">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Servicio <mat-icon>unfold_more</mat-icon>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="cell-elem">
+            <div class="cell-elem-text">
+              {{ element.service }}
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="proyeccion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Proyección <mat-icon>unfold_more</mat-icon>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="cell-elem">
+            <div class="cell-elem-text">
+              {{ element.referencia }}
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+
+
+      <ng-container matColumnDef="usuario_creado">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Usuario Crea <mat-icon>unfold_more</mat-icon>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="cell-elem">
+            <div class="cell-elem-text">
+              {{ element.createBy }}
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fecha_creado">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Fecha Crea <mat-icon>unfold_more</mat-icon>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="cell-elem">
+            <div class="cell-elem-text">
+              {{ element.createAt }}
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="usuario_modificado">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Usuario Modifica <mat-icon>unfold_more</mat-icon>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="cell-elem">
+            <div class="cell-elem-text">
+              {{ element.modifyBy }}
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fecha_modificado">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Fecha Modifica <mat-icon>unfold_more</mat-icon>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="cell-elem">
+            <div class="cell-elem-text">
+              {{ element.modifyAt | date : "dd/MM/yyyy" }}
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="disponibilidad">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Disponibilidad <mat-icon>unfold_more</mat-icon>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="cell-elem">
+            <div style="text-align: center;" class="cell-elem-text">
+              {{days[element.availability[0]?.dayOfWeek  || '']}}
+              {{element.availability[0]?.timeStart}} - {{element.availability[0]?.timeEnd}}
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="accion">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let element">
+          <div class="cell-elem">
+            <div class="cell-elem-text">
+              <div class="is-flex is-action">
+                <img *ngIf="element.isAvailable=='Disponible'" style="cursor: pointer;" src="./assets/iconos/aspa.svg">
+                <img *ngIf="element.isAvailable!='Disponible'" style="cursor: pointer;" src="./assets/iconos/equis.svg">
+                <img id="layer-button" *ngIf="element.service=='WFS'" style="cursor: pointer;" src="./assets/iconos/layers.svg" (click)="layerLoadDialog(element)">
+                <img *ngIf="element.service!='WFS'" style="cursor: pointer;" src="./assets/iconos/layer-disabled.svg">
+                
+                <time-icon *ngIf="element.service=='WFS'" class="icon" (click)="scheduleTask(element)"></time-icon>
+                <time-icon-disabled *ngIf="element.service!='WFS'" class="icon"></time-icon-disabled>
+                <mat-icon (click)="download(element)" class="icon" id="download-button">download</mat-icon> 
+              </div>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr
+        mat-row
+        *matRowDef="let element; columns: displayedColumns; let i = index"
+      ></tr>
+    </table>
+  </div>
+  <app-availability-table [type]="type" *ngIf="tab===1"></app-availability-table>
+</div>
+

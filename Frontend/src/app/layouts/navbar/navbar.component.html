@@ -1,0 +1,43 @@
+<nav *ngIf="display" class="nav">
+    <mat-icon class="nav__menu" (click)="toogleMenu()" matTooltip="Menú">menu</mat-icon>
+
+    <div class="nav__items">
+       <!--
+      <span style="font-size: 40px">{{ userData2.name }}</span>
+      <app-profile-icon class="nav__items__item" [matMenuTriggerFor]="menu"></app-profile-icon>
+
+     
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="./usuario">Ver Perfil</button>
+        <button mat-menu-item (click)="logout()">Cerrar Sesión</button>
+      </mat-menu>
+  -->
+    </div>
+
+    <div class="nav__items">
+      <button
+      class="is-primary-button"
+      type="button"
+      aria-label="HELP"
+      (click)="scheduleAttributes()"
+      >
+      AYUDA
+      </button>
+      
+    </div>
+  
+    <div class="nav__items">
+      <span style="font-size: 40px">{{ userData2?.name }}-{{institution}}</span>
+
+  
+      <app-profile-icon class="nav__items__item" [matMenuTriggerFor]="menu"></app-profile-icon>
+  
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="./usuario">Ver Perfil</button>
+        <button mat-menu-item (click)="logout()">Cerrar Sesión</button>
+      </mat-menu>
+    </div>
+
+
+  </nav>
+  

@@ -1,0 +1,49 @@
+version: "3"
+services:
+  mongodb-users-sim:
+    image: mongo:latest
+    container_name: mongodb-users-sim
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: secret
+      MONGO_INITDB_DATABASE: test
+    ports:
+      - 27030:27017
+    volumes:
+      - mongodb_sim_data:/data/db
+
+    networks:
+      - users_sim_network
+
+    command: ["mongod", "--port", "27017"]
+
+  api-users-sim:
+    container_name: api-users-sim
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      MONGODB_URI: mongodb://admin:secret@mongodb-users-sim:27017
+      MONGODB_DATABASE: users
+      SENDGRID_API_KEY: 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
+      SENDGRID_FROM_EMAIL: sisammensajeria@gmail.com
+      SENDGRID_TEMPLATE_REGISTRATION_ID: d-c408cd4a1d7a4a47a337f8adffb69ede
+      SENDGRID_TEMPLATE_RESET_PASSWORD_ID: d-9869fd46ed424023ada0f860ffe8a53e
+    ports:
+      - 8089:8080
+    depends_on:
+      - mongodb-users-sim
+    volumes:
+      - api_users_sim_data:/app/data
+
+    networks:
+      - users_sim_network
+
+networks:
+  users_sim_network:
+    driver: bridge
+
+volumes:
+  mongodb_sim_data:
+  api_users_sim_data:
