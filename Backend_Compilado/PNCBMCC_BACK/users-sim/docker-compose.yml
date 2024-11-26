@@ -26,7 +26,7 @@ services:
     environment:
       MONGODB_URI: mongodb://admin:secret@mongodb-users-sim:27017
       MONGODB_DATABASE: users
-      SENDGRID_API_KEY: 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
+      SENDGRID_API_KEY: kadjasdjasdjandndn
       SENDGRID_FROM_EMAIL: sisammensajeria@gmail.com
       SENDGRID_TEMPLATE_REGISTRATION_ID: d-c408cd4a1d7a4a47a337f8adffb69ede
       SENDGRID_TEMPLATE_RESET_PASSWORD_ID: d-9869fd46ed424023ada0f860ffe8a53e
