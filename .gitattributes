@@ -1,0 +1,2 @@
+Backend_Compilado/PNCBMCC_BACK/sim-flask_PNCBMCC.zip filter=lfs diff=lfs merge=lfs -text
+Backend_Compilado/PNCBMCC_BACK/sim-flask/main filter=lfs diff=lfs merge=lfs -text
